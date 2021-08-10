@@ -1,0 +1,25 @@
+services:
+    # ADAPTERS
+    options.adapater.doctrine:
+        class: Damian972\OptionsBundle\Adapter\DoctrineAdapter
+        arguments: ['@doctrine.orm.entity_manager']
+
+    Damian972\OptionsBundle\Contracts\AdapterInterface: '@options.adapater.doctrine'
+
+    # REPOSITORIES
+    # options.repository.option_repository:
+    #     public: true
+    #     class: Damian972\OptionsBundle\Repository\OptionRepository
+    #     autowire: true
+    #     tags:
+    #         - { name: doctrine.repository_service }
+
+    # Damian972\OptionsBundle\Repository\OptionRepository: '@options.repository.option_repository'
+
+    # SERVICES
+    options.service:
+        public: true
+        class: Damian972\OptionsBundle\Options
+        arguments: ['@Damian972\OptionsBundle\Contracts\AdapterInterface']
+
+    Damian972\OptionsBundle\Options: '@options.service'
