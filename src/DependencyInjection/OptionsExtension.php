@@ -19,5 +19,8 @@ class OptionsExtension extends Extension
 
         $configuration = new Configuration();
         $configs = $this->processConfiguration($configuration, $configs);
+
+        $container->setParameter('options.lazy', $configs['lazy']);
+        $container->setParameter('options.target_entity', $configs['target_entity']);
     }
 }

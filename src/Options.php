@@ -13,14 +13,13 @@ class Options implements OptionsInterface
     protected bool $fullyLoaded = false;
     protected AdapterInterface $adapter;
 
-    public function __construct(AdapterInterface $adapter, bool $lazy = false, array $options = [])
+    public function __construct(AdapterInterface $adapter, bool $lazy = false)
     {
         $this->adapter = $adapter;
         $this->lazy = $lazy;
-        $this->options = $options;
     }
 
-    public function get(string $key, ?string $parent = null): OptionInterface
+    public function get(string $key, ?string $parent = null): ?OptionInterface
     {
         if (!$this->lazy && !$this->fullyLoaded) {
             foreach ($this->adapter->getAll() as $option) {
