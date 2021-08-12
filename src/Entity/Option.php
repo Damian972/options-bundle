@@ -13,8 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Option implements OptionInterface
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     protected ?int $id = null;
@@ -25,7 +25,7 @@ class Option implements OptionInterface
     protected string $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="key_name", type="string", length=255)
      */
     protected string $key;
 
