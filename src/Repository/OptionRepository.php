@@ -26,7 +26,16 @@ class OptionRepository extends EntityRepository implements OptionRepositoryInter
 
     public function save(OptionInterface $option): void
     {
-        $this->getEntityManager()->persist($option);
-        $this->getEntityManager()->flush();
+        $em = $this->getEntityManager();
+        if (null === $option->getId()) {
+            if (null !== $item = $this->findOneByKeyAndparent($option->getKey(), $option->getParent())) {
+                $item->setValue($option->getValue());
+                $em->persist($item);
+            }
+        } else {
+            $em->persist($option);
+        }
+
+        $em->flush();
     }
 }
