@@ -6,20 +6,10 @@ services:
 
     Damian972\OptionsBundle\Contracts\AdapterInterface: '@options.adapater.doctrine'
 
-    # REPOSITORIES
-    # options.repository.option_repository:
-    #     public: true
-    #     class: Damian972\OptionsBundle\Repository\OptionRepository
-    #     autowire: true
-    #     tags:
-    #         - { name: doctrine.repository_service }
-
-    # Damian972\OptionsBundle\Repository\OptionRepository: '@options.repository.option_repository'
-
     # SERVICES
     options.service:
         public: true
         class: Damian972\OptionsBundle\Options
-        arguments: ['@Damian972\OptionsBundle\Contracts\AdapterInterface']
+        arguments: ['@Damian972\OptionsBundle\Contracts\AdapterInterface', '%options.lazy%']
 
     Damian972\OptionsBundle\Options: '@options.service'
