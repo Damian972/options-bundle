@@ -35,14 +35,20 @@ class Option implements OptionInterface
     protected string $value;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    protected string $type;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected ?string $parent = null;
+
+    public static function make(string $key, string $value, ?string $parent = null): self
+    {
+        $instance = new self();
+
+        return $instance->setKey($key)
+            ->setValue($value)
+            ->setName($key)
+            ->setParent($parent)
+        ;
+    }
 
     public function getId(): ?int
     {
@@ -54,9 +60,23 @@ class Option implements OptionInterface
         return $this->name;
     }
 
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
     public function getKey(): string
     {
         return $this->key;
+    }
+
+    public function setKey(string $key): self
+    {
+        $this->key = $key;
+
+        return $this;
     }
 
     public function getValue(): string
@@ -64,13 +84,22 @@ class Option implements OptionInterface
         return $this->value;
     }
 
-    public function getType(): string
+    public function setValue(string $value): self
     {
-        return $this->type;
+        $this->value = $value;
+
+        return $this;
     }
 
     public function getParent(): ?string
     {
         return $this->parent;
+    }
+
+    public function setParent(?string $parent): self
+    {
+        $this->parent = $parent;
+
+        return $this;
     }
 }

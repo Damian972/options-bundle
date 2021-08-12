@@ -10,7 +10,7 @@ interface OptionInterface
 
     public function getValue(): string;
 
-    public function getType(): string;
-
     public function getParent(): ?string;
+
+    public static function make(string $key, string $value, ?string $parent = null): OptionInterface;
 }
