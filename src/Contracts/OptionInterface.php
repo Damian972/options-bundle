@@ -4,6 +4,8 @@ namespace Damian972\OptionsBundle\Contracts;
 
 interface OptionInterface
 {
+    public function __toString(): string;
+
     public function getId(): ?int;
 
     public function getName(): string;

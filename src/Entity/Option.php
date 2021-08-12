@@ -39,6 +39,11 @@ class Option implements OptionInterface
      */
     protected ?string $parent = null;
 
+    public function __toString(): string
+    {
+        return $this->value;
+    }
+
     public static function make(string $key, string $value, ?string $parent = null): self
     {
         $instance = new self();
