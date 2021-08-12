@@ -12,4 +12,4 @@ services:
         class: Damian972\OptionsBundle\Options
         arguments: ['@Damian972\OptionsBundle\Contracts\AdapterInterface', '%options.lazy%']
 
-    Damian972\OptionsBundle\Options: '@options.service'
+    Damian972\OptionsBundle\Contracts\OptionsInterface: '@options.service'
