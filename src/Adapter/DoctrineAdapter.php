@@ -28,7 +28,7 @@ class DoctrineAdapter implements AdapterInterface
 
     public function get(string $key, ?string $parent = null): ?OptionInterface
     {
-        return $this->repository->findByIdentifierAndParent($key, $parent);
+        return $this->repository->findOneByKeyAndparent($key, $parent);
     }
 
     public function set(OptionInterface $option): void

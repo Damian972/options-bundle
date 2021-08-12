@@ -7,9 +7,9 @@ interface OptionRepositoryInterface
     /**
      * @return OptionInterface[]
      */
-    public function findAll(): array;
+    public function findAll();
 
-    public function findByIdentifierAndParent(string $identifier, ?string $parent = null): ?OptionInterface;
+    public function findOneByKeyAndparent(string $identifier, ?string $parent = null): ?OptionInterface;
 
     public function save(OptionInterface $option): void;
 }

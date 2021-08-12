@@ -15,20 +15,13 @@ class OptionRepository extends EntityRepository implements OptionRepositoryInter
         parent::__construct($em, $em->getClassMetadata(Option::class));
     }
 
-    public function findByIdentifierAndParent(string $identifier, ?string $parent = null): ?OptionInterface
+    public function findOneByKeyAndparent(string $key, ?string $parent = null): ?OptionInterface
     {
-        $query = $this->createQueryBuilder('o')
-            ->where('o.identifier = :identifier')
-            ->setParameter('identifier', $identifier)
-        ;
-
         if (null !== $parent) {
-            $query->andWhere('o.parent = :parent')
-                ->setParameter('parent', $parent)
-            ;
+            return $this->findOneBy(compact('key', 'parent'));
         }
 
-        return $query->getQuery()->getOneOrNullResult();
+        return $this->findOneBy(compact('key'));
     }
 
     public function save(OptionInterface $option): void
