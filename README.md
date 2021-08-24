@@ -5,7 +5,7 @@ The main goal of this bundle is to be able to recover an option (key / value) st
 ## Installation
 
 ```bash
-# coming soon...
+composer require damian972/options-bundle
 ```
 
 ## Usage
